@@ -67,6 +67,7 @@ function alternatingCharacters(input) {
 alternatingCharacters("5\nAAAA\nBBBBB\nABABABAB\nBABABA\nAAABBB")
 
 // figure out whether string input is an anagram of a palindrome
+// PASSED: 30/30
 function gameOfThrones(input) {
 	var codedString = input.split("");
 	var letterObject = {};
@@ -105,3 +106,34 @@ function gameOfThrones(input) {
 gameOfThrones("aaabbbb")
 gameOfThrones("cdefghmnopqrstuvw")
 gameOfThrones("cdcdcdcdeeeef")
+
+// given an input of multiple rock elements, find the common letters between all the rocks
+// PASSED: 30/30
+function gemstones(input) {
+	stones = input.split("\n").map(function(value) {
+		return value.replace(/(.)(?=.*\1)/g, "")
+	})
+	stones.shift()
+	finalCount = 0;
+	for (var i=0;i<stones[0].length;i++){
+		currentChar = stones[0][i]
+		currentCount = 0;
+		for (var s=1;s<stones.length;s++) {
+			if (stones[s].indexOf(currentChar) != -1) {
+				currentCount++;
+			}
+		}
+		if (currentCount == stones.length-1) {
+			finalCount++;
+		}
+	}
+	console.log(finalCount);
+}
+
+gemstones("3\nabcdde\nbaccd\neeabg")
+
+// compare two strings and test whether they are anagrams
+// returning how many letters have to be deleted to make them anagrams 
+function makeItAnagram(input) {
+	
+}
