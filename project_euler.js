@@ -472,4 +472,124 @@ function addDigits(number) {
 	return total;
 }
 
-addDigits(fullPower(2,1000));
+// addDigits(fullPower(9,100));
+
+// how man letters are used in writing out all the numbers from 1 to 1000
+function numToWords(num) {
+	numString = "";
+	if (num <= 19) {
+		numString += onesTeens(num);
+	} else if (num >= 20 && num <= 99) {
+		var tens = parseInt(num.toString().charAt(0));
+		var ones = parseInt(num.toString().charAt(1))
+		numString = twentyToHundred(tens) + " " + onesTeens(ones);
+	} else if (num > 99 && num <= 999) {
+		var onesInt = parseInt(num.toString().charAt(2));
+		var tensInt = parseInt(num.toString().charAt(1));
+		var hundredsInt = parseInt(num.toString().charAt(0));
+		var tenOneInt = parseInt(num.toString().charAt(1) + num.toString().charAt(2))
+		if (tensInt >= 2) {
+			// console.log("Big tens, hundred", hundredsInt)
+			numString = hundreds(hundredsInt) + " and " + twentyToHundred(tensInt) + " " + onesTeens(onesInt);
+		} else if (tensInt < 2) {
+			// console.log("Small tens, hundred", hundredsInt, tenOneInt)
+			if (tenOneInt == 0) {
+				numString = hundreds(hundredsInt);
+			} else {
+				numString = hundreds(hundredsInt) + " and " + onesTeens(tenOneInt);
+			}
+		}
+	} else if (num === 1000) {
+		return "one thousand"
+	}
+	function hundreds(num) {
+		// console.log("fetching hundreds")
+		if (num == 1) {
+			return "one hundred"
+		} else if (num == 2) {
+			return "two hundred";
+		} else if (num == 3) {
+			return "three hundred";
+		} else if (num == 4) {
+			return "four hundred";
+		} else if (num == 5) {
+			return "five hundred";
+		} else if (num == 6) {
+			return "six hundred";
+		} else if (num == 7) {
+			return "seven hundred";
+		} else if (num == 8) {
+			return "eight hundred";
+		} else if (num == 9) {
+			return "nine hundred";
+		}
+	}
+	function twentyToHundred(num) {
+		if (num == 2) {
+			return "twenty";
+		} else if (num == 3) {
+			return "thirty";
+		} else if (num == 4) {
+			return "forty";
+		} else if (num == 5) {
+			return "fifty";
+		} else if (num == 6) {
+			return "sixty";
+		} else if (num == 7) {
+			return "seventy";
+		} else if (num == 8) {
+			return "eighty";
+		} else if (num == 9) {
+			return "ninety";
+		}
+	}
+	function onesTeens(num) {
+		if (num == 0) {return ""}
+		if (num == 1) {return "one";
+		} else if (num == 2) {return "two";
+	 	} else if (num == 3) {return "three";
+		} else if (num == 3) {return "three";
+		} else if (num == 4) {return "four";
+		} else if (num == 5) {return "five";
+		} else if (num == 6) {return "six";
+		} else if (num == 7) {return "seven";
+		} else if (num == 8) {return "eight";
+		} else if (num == 9) {return "nine";
+		} else if (num == 10) {return "ten";
+		} else if (num == 11) {return "eleven";
+		} else if (num == 12) {return "twelve";
+		} else if (num == 13) {return "thirteen";
+		} else if (num == 14) {return "fourteen";
+		} else if (num == 15) {return "fifteen";
+		} else if (num == 16) {return "sixteen";
+		} else if (num == 17) {return "seventeen";
+		} else if (num == 18) {return "eighteen";
+		} else if (num == 19) {return "nineteen";} 
+	}
+	console.log(numString)
+	return numString;
+}
+
+function countLetters(string) {
+	return string.match(/[a-z]/gi).length
+}
+
+function numberLetterCounts() {
+	var totalLetterCount = 0;
+	for (var i=1;i<=1000;i++) {
+		totalLetterCount += countLetters(numToWords(i));
+		console.log("Adding",i,"Answer:",totalLetterCount, countLetters(numToWords(i)))
+	}
+}
+
+numToWords(4)
+numToWords(52)
+numToWords(94)
+countLetters(numToWords(969))
+
+numberLetterCounts();
+
+// Counting Sundays, how many sundays fell on the first of the month during the twentieth century
+function CountingSundays() {
+	
+}
