@@ -410,5 +410,66 @@ function LongestChain() {
 	console.log("Winner is",magicNumber,"Chain length", currentMax)
 }
 
-LongestChain();
+// find the sum of the digits of the number 2^1000
+// SOLVED: 1366 is the answer of adding the digits
+// 10715086071862673209484250490600018105614048117055336074437503883703510511249361224931983788156958581275946729175531468251871452856923140435984577574698574803934567774824230985421074605062371141877954182153046474983581941267398767559165543946077062914571196477686542167660429831652624386837205668069376 is the 2^1000
+// Presumably this function would work for any number < 10 and exponent
+function fullPower(num,exponent) {
+	var powerArray = [num];
+	var remainder = 0;
+	for (var i=0;i<exponent-1;i++) {
+		var currentPower = powerArray[powerArray.length - 1].toString().split("").map(Number);
+		console.log("current power to be multiplied",currentPower)
+		var newPower = []; 
+		for (var j=currentPower.length-1;j>=0;j--) {
+			console.log("currentPower:",currentPower[j],"j",j)
+			// if it equals 0
+			if (currentPower[j] == 0) {
+				if (remainder == 0) {
+					newPower.unshift(0)
+				} else {
+					newPower.unshift(remainder)
+				}
+				remainder = 0;
+			} else if (currentPower[j] * num + remainder >= 10 && j == 0) {
+				//if its the last number
+				finalNumberArray = (currentPower[j] * num + remainder).toString().split("").map(Number)
+				for (var h=finalNumberArray.length-1;h>=0;h--) {
+					console.log("adding final number", finalNumberArray[h])
+					newPower.unshift(finalNumberArray[h])
+				}
+				console.log("final num",finalNumberArray)
+			} else if (currentPower[j] * num + remainder < 10) {
+				//if the product is less then 10
+				console.log("< 10 ", (currentPower[j] * num) + remainder, "remainder:",remainder,"currentPower", currentPower[j])
+				console.log(currentPower[j],(currentPower[j] * num) + remainder, "is less than 10")
+				newPower.unshift(currentPower[j] * num + remainder);
+				remainder = 0;	
+			} else {
+				// if the product is greater than 10 and has a remainder
+				var newValue = currentPower[j] * num + remainder; 
+				newPower.unshift(parseInt(newValue.toString().charAt(newValue.toString().length-1)))
+				console.log(currentPower[j] * num + remainder,"> 10 ","remainder",remainder)
+				remainder = parseInt(newValue.toString().charAt(0))
+				console.log("newPower is now:",newPower,"newValue",newValue,"new Remainder",remainder)
+			}
+		}
+		remainder = 0;
+		console.log("new Power",newPower.join(""));
+		powerArray.push(newPower.join(""))
+	}
+	console.log("Answer:",powerArray[powerArray.length-1], "Computed:",Math.pow(num,exponent))
+	return powerArray[powerArray.length-1];
+}
 
+function addDigits(number) {
+	var digitsArray = number.split("").map(Number);
+	var total = 0;
+	for (var i=0;i<digitsArray.length;i++) {
+		total += digitsArray[i];
+	}
+	console.log(total)
+	return total;
+}
+
+addDigits(fullPower(2,1000));
