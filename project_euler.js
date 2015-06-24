@@ -582,14 +582,85 @@ function numberLetterCounts() {
 	}
 }
 
-numToWords(4)
-numToWords(52)
-numToWords(94)
-countLetters(numToWords(969))
+// countLetters(numToWords(969))
 
-numberLetterCounts();
+// numberLetterCounts();
 
 // Counting Sundays, how many sundays fell on the first of the month during the twentieth century
 function CountingSundays() {
-	
+	var currentWeekDay = 3;
+	var currentMonth = 1;
+	var currentMonthDate = 1;
+	var currentYear = 1901;
+	var firstSundayCount = 0;
+	var leapYearArray = [];
+	while (currentYear != 2001) {
+		increaseWeekDay();
+		increaseMonthDate();
+		console.log(currentMonth,currentMonthDate,currentYear, currentWeekDay)
+		if (currentMonthDate == 1 && currentWeekDay == 1) {
+			firstSundayCount++;
+			console.log("found a sunday:",currentMonth, currentYear,firstSundayCount);
+		}
+	}
+	function increaseWeekDay(){
+		// increase weekday, 1 being Sunday
+		if (currentWeekDay == 7) {currentWeekDay = 1;}
+		else {currentWeekDay++}
+	}
+	function increaseMonthDate() {
+		if (currentMonth == 1 && currentMonthDate == 31) {
+			currentMonth = 2;
+			currentMonthDate = 1;
+		} else if (currentMonth == 2 && currentMonthDate == 28 && currentYear % 4 != 0) {
+			// feb and not a leap year
+			currentMonth = 3;
+			currentMonthDate = 1;
+		} else if (currentMonth == 2 && currentMonthDate == 29 && currentYear % 4 == 0) {
+			// feb and a leap year, extra day, keep track with array to make sure it is calculating correctly
+			leapYearArray.push(currentYear)
+			currentMonth = 3;
+			currentMonthDate = 1;
+		} else if (currentMonth == 3 && currentMonthDate == 31) {
+			// last day of march
+			currentMonth = 4;
+			currentMonthDate = 1;
+		} else if (currentMonth == 4 && currentMonthDate == 30) {
+			// last day of April
+			currentMonth = 5;
+			currentMonthDate = 1;
+		} else if (currentMonth == 5 && currentMonthDate == 31) {
+			// last day of 
+			currentMonth = 6;
+			currentMonthDate = 1;
+		} else if (currentMonth == 6 && currentMonthDate == 30) {
+			currentMonth = 7;
+			currentMonthDate = 1;
+		} else if (currentMonth == 7 && currentMonthDate == 31) {
+			currentMonth = 8;
+			currentMonthDate = 1;
+		} else if (currentMonth == 8 && currentMonthDate == 31) {
+			currentMonth = 9;
+			currentMonthDate = 1;
+		} else if (currentMonth == 9 && currentMonthDate == 30) {
+			currentMonth = 10;
+			currentMonthDate = 1;
+		} else if (currentMonth == 10 && currentMonthDate == 31) {
+			currentMonth = 11;
+			currentMonthDate = 1;
+		} else if (currentMonth == 11 && currentMonthDate == 30) {
+			currentMonth = 12;
+			currentMonthDate = 1;
+		} else if (currentMonth == 12 && currentMonthDate == 31) {
+			// last day of December, increase new year
+			currentMonth = 1;
+			currentMonthDate = 1;
+			currentYear++;
+		} else {
+			currentMonthDate++;
+		}
+	}
+	console.log(leapYearArray, firstSundayCount)
 }
+
+CountingSundays()
