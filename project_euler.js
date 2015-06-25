@@ -463,7 +463,7 @@ function fullPower(num,exponent) {
 }
 
 function addDigits(number) {
-	var digitsArray = number.split("").map(Number);
+	var digitsArray = number.toString().split("").map(Number);
 	var total = 0;
 	for (var i=0;i<digitsArray.length;i++) {
 		total += digitsArray[i];
@@ -475,6 +475,7 @@ function addDigits(number) {
 // addDigits(fullPower(9,100));
 
 // how man letters are used in writing out all the numbers from 1 to 1000
+// SOLVED: 21124
 function numToWords(num) {
 	numString = "";
 	if (num <= 19) {
@@ -587,6 +588,7 @@ function numberLetterCounts() {
 // numberLetterCounts();
 
 // Counting Sundays, how many sundays fell on the first of the month during the twentieth century
+// Solved: 171
 function CountingSundays() {
 	var currentWeekDay = 3;
 	var currentMonth = 1;
@@ -663,4 +665,200 @@ function CountingSundays() {
 	console.log(leapYearArray, firstSundayCount)
 }
 
-CountingSundays()
+// Factorial digit sum
+// find the sum of digits in the number 100!
+// 100! = 100 * 99 ... 2 * 1
+function addTwoArrays(num1Array,num2Array) {
+	console.log("num1Array:",num1Array,"num2Array:",num2Array)
+	var remainder = 0;
+	var totalSum = [];
+	if (num1.toString().length > num2.toString().length) {
+		for (var s=0;s<num1Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			if (currentSum >= 10) {
+				var tens = parseInt(currentSum.toString().charAt(0));
+				var ones = parseInt(currentSum.toString().charAt(1));
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			} else {
+				totalSum.push(num1Array[s] + remainder)
+				remainder = 0;
+			}
+		}
+	} else if (num1.toString().length < num2.toString().length) {
+		for (var s=0;s<num2Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			if (currentSum >= 10) {
+				var tens = parseInt(currentSum.toString().charAt(0));
+				var ones = parseInt(currentSum.toString().charAt(1));
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			} else {
+				totalSum.push(num2Array[s] + remainder)
+				remainder = 0;
+			}
+		}
+	} else if (num1.toString().length == num2.toString().length) {
+		for (var s=0;s<num1Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			var tens = parseInt(currentSum.toString().charAt(0));
+			var ones = parseInt(currentSum.toString().charAt(1));
+			if (currentSum >= 10 && s == num1Array.length-1) {
+				totalSum.push(ones,tens);	
+			} else if (currentSum >= 10) {
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			}
+		}
+	}
+	totalSum = totalSum.reverse().join("")
+	console.log(totalSum)
+	return totalSum;
+}
+
+function addTwo(num1,num2) {
+	console.log("num1",num1,"num2",num2)
+	var num1Array = num1.toString().split("").map(Number).reverse();
+	var num2Array = num2.toString().split("").map(Number).reverse();
+	var remainder = 0;
+	var totalSum = [];
+	if (num1.toString().length > num2.toString().length) {
+		for (var s=0;s<num1Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			if (currentSum >= 10) {
+				var tens = parseInt(currentSum.toString().charAt(0));
+				var ones = parseInt(currentSum.toString().charAt(1));
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			} else {
+				totalSum.push(num1Array[s] + remainder)
+				remainder = 0;
+			}
+		}
+	} else if (num1.toString().length < num2.toString().length) {
+		for (var s=0;s<num2Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			if (currentSum >= 10) {
+				var tens = parseInt(currentSum.toString().charAt(0));
+				var ones = parseInt(currentSum.toString().charAt(1));
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			} else {
+				totalSum.push(num2Array[s] + remainder)
+				remainder = 0;
+			}
+		}
+	} else if (num1.toString().length == num2.toString().length) {
+		for (var s=0;s<num1Array.length;s++) {
+			var currentSum = num1Array[s] + num2Array[s] + remainder;
+			console.log(currentSum)
+			var tens = parseInt(currentSum.toString().charAt(0));
+			var ones = parseInt(currentSum.toString().charAt(1));
+			if (currentSum >= 10 && s == num1Array.length-1) {
+				totalSum.push(ones,tens);	
+			} else if (currentSum >= 10) {
+				remainder = tens;
+				totalSum.push(ones);
+			} else if (currentSum < 10) {
+				totalSum.push(currentSum);
+				remainder = 0;
+			}
+		}
+	}
+	totalSum = totalSum.reverse().join("")
+	console.log(totalSum)
+	return totalSum;
+}
+
+function multiplyTwo(num1,num2) {
+	var num1Array = num1.toString().split("").map(Number);
+	var num2Array = num2.toString().split("").map(Number);
+	console.log(num1Array,num2Array)
+	var productArray = [];
+	var remainder = 0;
+	var totalProduct = 0;
+	var zeroAdded = 0;
+	for (var i=num2Array.length-1;i>=0;i--) {
+		var currentProductArray = [];
+		for (var j=num1Array.length-1;j>=0;j--) {
+			var currentProduct = num2Array[i] * num1Array[j] + remainder;
+			console.log("multiplying", num2Array[i], "*",num1Array[j],"+ remainder", remainder, "=",currentProduct)
+			var tens = parseInt(currentProduct.toString().charAt(0));
+			var ones = parseInt(currentProduct.toString().charAt(1));
+			if (currentProduct >= 10 && j == 0) {
+				currentProductArray.unshift(tens,ones);
+				remainder = 0;
+			} else if (currentProduct >= 10) {
+				currentProductArray.unshift(ones);
+				remainder = tens;
+			} else if (currentProduct < 10) {
+				currentProductArray.unshift(currentProduct)
+				remainder = 0;
+			}
+		}
+		for (var z=0;z<zeroAdded;z++) {
+			console.log("adding zero",currentProductArray)
+			currentProductArray.push(0)
+			console.log("adding zero",currentProductArray)
+		}
+		zeroAdded++;
+		productArray.push(parseInt(currentProductArray.join("")))
+	}
+	console.log("Product Array:",productArray);
+	for (var p=0;p<productArray.length;p++) {
+		if (productArray.length == 1) {
+			totalProduct = productArray[p];
+		} else if (productArray.length == 2) {
+			totalProduct = addTwo(productArray[p],productArray[p+1]);
+			break;
+		} else if (p == 0) {
+			totalProduct+= addTwo(productArray[p],productArray[p+1]);
+			p++;
+		} else {
+			totalProduct+= addTwo(totalProduct,productArray[p]);
+		}
+	}
+	console.log("Total Product:", totalProduct);
+	return totalProduct;
+}
+
+// console.log("sum test", addTwo(9698,9649))
+// multiplyTwo(1023410,99)
+function FactorialDigitSum(n) {
+	totalFactorialSum = 0;
+	for (var i=n;i>0;i--) {
+		console.log("i",i)
+		if (i==n) {
+			console.log("first i",i,totalFactorialSum)
+			totalFactorialSum = multiplyTwo(i,i-1)
+			i--;
+		} else {
+			console.log("i",i,totalFactorialSum)
+			totalFactorialSum = multiplyTwo(totalFactorialSum,i);
+		}
+	}
+	console.log("Total Factorial:", totalFactorialSum)
+	console.log("Total Factorial Sum:",addDigits(totalFactorialSum))
+}
+
+FactorialDigitSum(30)
