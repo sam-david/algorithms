@@ -672,7 +672,7 @@ function addTwoArrays(num1Array,num2Array) {
 	console.log("num1Array:",num1Array,"num2Array:",num2Array)
 	var remainder = 0;
 	var totalSum = [];
-	if (num1.toString().length > num2.toString().length) {
+	if (num1Array.length > num2Array.length) {
 		for (var s=0;s<num1Array.length;s++) {
 			var currentSum = num1Array[s] + num2Array[s] + remainder;
 			console.log(currentSum)
@@ -689,7 +689,7 @@ function addTwoArrays(num1Array,num2Array) {
 				remainder = 0;
 			}
 		}
-	} else if (num1.toString().length < num2.toString().length) {
+	} else if (num1Array.length < num2Array.length) {
 		for (var s=0;s<num2Array.length;s++) {
 			var currentSum = num1Array[s] + num2Array[s] + remainder;
 			console.log(currentSum)
@@ -706,7 +706,7 @@ function addTwoArrays(num1Array,num2Array) {
 				remainder = 0;
 			}
 		}
-	} else if (num1.toString().length == num2.toString().length) {
+	} else if (num1Array.length == num2Array.length) {
 		for (var s=0;s<num1Array.length;s++) {
 			var currentSum = num1Array[s] + num2Array[s] + remainder;
 			console.log(currentSum)
@@ -723,8 +723,8 @@ function addTwoArrays(num1Array,num2Array) {
 			}
 		}
 	}
-	totalSum = totalSum.reverse().join("")
-	console.log(totalSum)
+	totalSum = totalSum.reverse()
+	console.log("totalSum:",totalSum,typeof totalSum)
 	return totalSum;
 }
 
@@ -796,7 +796,7 @@ function multiplyTwo(num1,num2) {
 	console.log(num1Array,num2Array)
 	var productArray = [];
 	var remainder = 0;
-	var totalProduct = 0;
+	var totalProductArray = [];
 	var zeroAdded = 0;
 	for (var i=num2Array.length-1;i>=0;i--) {
 		var currentProductArray = [];
@@ -816,30 +816,31 @@ function multiplyTwo(num1,num2) {
 				remainder = 0;
 			}
 		}
+		// add trailing zeros
 		for (var z=0;z<zeroAdded;z++) {
 			console.log("adding zero",currentProductArray)
 			currentProductArray.push(0)
 			console.log("adding zero",currentProductArray)
 		}
 		zeroAdded++;
-		productArray.push(parseInt(currentProductArray.join("")))
+		productArray.push(currentProductArray)
 	}
 	console.log("Product Array:",productArray);
 	for (var p=0;p<productArray.length;p++) {
 		if (productArray.length == 1) {
-			totalProduct = productArray[p];
+			totalProductArray = productArray[p];
 		} else if (productArray.length == 2) {
-			totalProduct = addTwo(productArray[p],productArray[p+1]);
+			totalProductArray = addTwoArrays(productArray[p],productArray[p+1]);
 			break;
 		} else if (p == 0) {
-			totalProduct+= addTwo(productArray[p],productArray[p+1]);
+			totalProductArray = addTwoArrays(productArray[p],productArray[p+1]);
 			p++;
 		} else {
-			totalProduct+= addTwo(totalProduct,productArray[p]);
+			totalProductArray = addTwoArrays(totalProductArray,productArray[p]);
 		}
 	}
-	console.log("Total Product:", totalProduct);
-	return totalProduct;
+	console.log("Total Product:", totalProductArray);
+	return totalProductArray.join("");
 }
 
 // console.log("sum test", addTwo(9698,9649))
@@ -861,4 +862,71 @@ function FactorialDigitSum(n) {
 	console.log("Total Factorial Sum:",addDigits(totalFactorialSum))
 }
 
-FactorialDigitSum(30)
+// FactorialDigitSum(11)
+
+//find the sum of all amicable numbers under 10000
+// Amicable numbers
+function AmicableNumbers() {
+	var amicableNumbersArray = [];
+	function properDivisorSum(num) {
+		var divisorArray = [];
+		for (var i=1;i<num;i++) {
+			if (num % i == 0) {
+				divisorArray.push(i);
+			}
+		}
+		if (divisorArray.length > 0) {
+			var totalSum = divisorArray.reduce(function(a,b) {
+				return a + b;
+			});
+			return totalSum;
+		} else {
+			return 0;
+		}
+	}
+	function amicablePair(a,b) {
+
+	}
+	function isAmicable(num) {
+		// Amicable test and make sure a != b
+		if (num == properDivisorSum(properDivisorSum(num)) && num != properDivisorSum(num)) {
+			console.log("Adding amis:",num,properDivisorSum(num))
+			// make sure number pair hasn't been added yet
+			if (amicableNumbersArray.indexOf(num) == -1 && amicableNumbersArray.indexOf(properDivisorSum(num)) == -1) {
+				amicableNumbersArray.push(num,properDivisorSum(num))
+				return true;
+			}
+		}
+		return false;
+	}
+	// isAmicable(2);
+	for (var i=1;i<10000;i++) {
+		isAmicable(i)
+	}
+	console.log("ami nums",amicableNumbersArray)
+	totalAmicableNumberSum = amicableNumbersArray.reduce(function(a,b) {
+		return a + b;
+	})
+	console.log(totalAmicableNumberSum)
+}
+// Solved: 31626 
+
+// Parsing a large text file of names. Find the total name score of all the names
+// Name score is the alphabetical value of the name times the alphabetical position of it in the list
+var nameData = require('./euler_data').sort()
+function NamesScores(data) {
+	function scoreName(name) {
+		var nameScore = 0;
+		for (i=0;i<name.length;i++) {
+			nameScore += name.charCodeAt(i) - 64;
+		}
+		return nameScore;
+	}
+	var totalNameScore = 0;
+	for (i=0;i<data.length;i++) {
+		totalNameScore += (scoreName(data[i]) * (i+1));
+	}
+	console.log(totalNameScore)
+}
+
+NamesScores(nameData)
