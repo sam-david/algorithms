@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Time Card Generator</title>
+	<script type="text/javascript" src="jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="timecard.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<table id="time-card-table" align="center">
+	</table>
+
+	<div class="custom-input-box">
+		<label for="weekly-hours">Weekly Hours</label>
+		<input type="number" id="weekly-hours"></br>
+		<label for="start-date">Start Date:</label>
+		<input type="date" id="start-date"></br>
+		<label for="start-time">Start Time:</label>
+		<input type="time" id="start-time"></br>
+
+		<button id="regenerate-button">Regenerate</button>
+	</div>
+
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

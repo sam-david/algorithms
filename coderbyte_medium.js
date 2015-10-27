@@ -8,8 +8,8 @@ function PrimeTime(num) {
 	return true;
 }
 
-PrimeTime(19)
-PrimeTime(110)
+// PrimeTime(19)
+// PrimeTime(110)
 
 // take input string of chars and encode outputing the number of times a char is repeated in a row next to the char 
 // INCOMPLETE
@@ -37,8 +37,8 @@ function RunLength(str) {
 	return finalString;
 }
 
-RunLength("abbcde")
-RunLength("wwwbbbw")
+// RunLength("abbcde")
+// RunLength("wwwbbbw")
 
 // take two input numbers and return the greatest common factor
 function Division(num1,num2) {
@@ -59,8 +59,8 @@ function Division(num1,num2) {
 	return factor;
 }
 
-Division(7,3)
-Division(36,54)
+// Division(7,3)
+// Division(36,54)
 
 // take two string inputs and figure out whether the letters from string2 are in string1
 function StringScramble(str1,str2) {
@@ -88,9 +88,9 @@ function StringScramble(str1,str2) {
 	return true;
 }
 
-StringScramble("cdore","coder")
-StringScramble("h3llko","hello")
-StringScramble("rkqodlw","world")
+// StringScramble("cdore","coder")
+// StringScramble("h3llko","hello")
+// StringScramble("rkqodlw","world")
 
 // take input array and determine whether any squence of numbers can be added together to equal the max number in the array 
 // INCOMPLETE this sounds like it might require recursion
@@ -116,8 +116,8 @@ function BinaryConverter(str) {
 	return sum
 }
 
-BinaryConverter("100101")
-BinaryConverter("011")
+// BinaryConverter("100101")
+// BinaryConverter("011")
 
 // take input string and number, scramble string so that all chars are shifted the input number over  to the right in the alphabet
 function CaesarCipher(str,num) {
@@ -136,9 +136,9 @@ function CaesarCipher(str,num) {
 	return finalString;
 }
 
-CaesarCipher("Hello",4)
-CaesarCipher("abc",0)
-CaesarCipher("Caesar Cipher",2)
+// CaesarCipher("Hello",4)
+// CaesarCipher("abc",0)
+// CaesarCipher("Caesar Cipher",2)
 
 // take input array and return the mode, if mode tied return number that appears first in array
 function SimpleMode(arr) {
@@ -163,9 +163,9 @@ function SimpleMode(arr) {
 	}
 }
 
-SimpleMode([5,5,2,2,1])
-SimpleMode([10,4,5,2,4])
-SimpleMode([3,4,1,6,10])
+// SimpleMode([5,5,2,2,1])
+// SimpleMode([10,4,5,2,4])
+// SimpleMode([3,4,1,6,10])
 
 // takes input array and returns the minimum number of integers needed to make the contents of the array consecutive from lowest ot highest
 //I like my solution here, I found the unique filter on stack overflow
@@ -179,8 +179,8 @@ function Consecutive(arr) {
 	return (filteredArray[filteredArray.length-1] - filteredArray[0]) - 2
 }
 
-Consecutive([5,10,15])
-Consecutive([-2,10,4])
+// Consecutive([5,10,15])
+// Consecutive([-2,10,4])
 
 // expansion on previous challenge, now output must show division of two input numbers
 // formatted with commas and 4 significant digits
@@ -189,9 +189,9 @@ function FormattedDivision(num1,num2) {
 	return Math.floor(num1 / num2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + remainder;
 }
 
-FormattedDivision(687644894944,67)
-FormattedDivision(2,3)
-FormattedDivision(10,10)
+// FormattedDivision(687644894944,67)
+// FormattedDivision(2,3)
+// FormattedDivision(10,10)
 
 // find the next greater number, greater than num, that uses the same digits
 // INCOMPLETE
@@ -205,8 +205,8 @@ function PermutationStep(num) {
 
 }
 
-PermutationStep(11211);
-PermutationStep(41352);
+// PermutationStep(11211);
+// PermutationStep(41352);
 
 // take two inputs, if there is a straight triple in input 1 and the same straight doube in input 2, return true 
 function TripleDouble(num1,num2) {
@@ -241,9 +241,9 @@ function TripleDouble(num1,num2) {
 	return 0;
 }
 
-TripleDouble(451999277,41177722899)
-TripleDouble(465555,5579)
-TripleDouble(67844,66237)
+// TripleDouble(451999277,41177722899)
+// TripleDouble(465555,5579)
+// TripleDouble(67844,66237)
 
 // take input string and return 1 if all the brackets are correctly matched and each is accounted for
 // INCOMPLETE: only accounts for when brackets are all in one unit, not when there are two separte groups
@@ -274,10 +274,10 @@ function BracketMatcher(str) {
 	return 1
 }
 
-BracketMatcher("(hello (world))")
-BracketMatcher("((hello (world))")
-BracketMatcher("(coder)(byte)))")
-BracketMatcher("(c(oder)) b(yte)") //doesn't work
+// BracketMatcher("(hello (world))")
+// BracketMatcher("((hello (world))")
+// BracketMatcher("(coder)(byte)))")
+// BracketMatcher("(c(oder)) b(yte)") //doesn't work
 
 // take input array and determine the total number of duplicate entries
 function DistinctList(arr) {
@@ -298,8 +298,8 @@ function DistinctList(arr) {
 	console.log(count);
 }
 
-DistinctList([0,-2,-2,5,5,5])
-DistinctList([100,2,101,4])
+// DistinctList([0,-2,-2,5,5,5])
+// DistinctList([100,2,101,4])
 
 // encode string input by replacing every alphabet char with its corresponding number order in the alphabet
 // Really like this solution!
@@ -314,5 +314,30 @@ function NumberEncoding(str) {
 	console.log(chars.join(""))
 }
 
-NumberEncoding("hello 45")
-NumberEncoding("jaj-a")
+// NumberEncoding("hello 45")
+// NumberEncoding("jaj-a")
+
+function isPrime(value) {
+    for(var i = 2; i < value; i++) {
+        if(value % i === 0) {
+            return false;
+        }
+    }
+    return value > 1;
+}
+
+function PrimeMover(num) {
+	var count = 0;
+	for (var i=1;i<Infinity;i++) {
+		if (isPrime(i)) {
+			count++;
+		}
+		if (count === num) {
+			return i;
+		}
+	}
+}
+
+console.log(PrimeMover(16))
+PrimeMover(9)
+PrimeMover(100)

@@ -929,4 +929,42 @@ function NamesScores(data) {
 	console.log(totalNameScore)
 }
 
-NamesScores(nameData)
+// NamesScores(nameData)
+
+// 1000 digit Fibonacci numbers. Find the first term in Fibonacci sequence to contain 1000 digits
+function ThousandDigitFibonacci() {
+	var first = 1
+	var second = 1
+	var index = 3
+	while (first < 1e1000) {
+		var result = first + second
+		console.log(index, result)
+		first = second
+		second = result
+		index++
+	}
+}
+
+// ThousandDigitFibonacci()
+// ran out of memory, might have to convert this to array addition
+
+// Find the sum of all numbers that can be written as the sum of fifth powers of their digits
+function DigitFifthPowers() {
+	var totalSum = 0;
+	function fifthPowerTest(num) {
+		var splitNum = num.toString().split('');
+		var sum = 0;
+		for (var i=0;i<splitNum.length;i++) {
+			sum += Math.pow(splitNum[i],5);
+		}
+		if (sum === num) {
+			totalSum += sum 
+			console.log(sum, totalSum)
+		}
+	}
+	for (var i=1;i<100000000;i++) {
+		fifthPowerTest(i)
+	}
+}
+
+DigitFifthPowers();
