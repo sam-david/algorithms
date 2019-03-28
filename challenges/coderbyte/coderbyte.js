@@ -1,31 +1,31 @@
 //return String reversed
-function FirstReverse(str) { 
+function FirstReverse(str) {
 	strArray = str.split("");
   reverseLetters = []
   for ( var i = strArray.length - 1; i >= 0; i--) {
   	reverseLetters.push(strArray[i]);
   }
-  return reverseLetters.join(""); 
-         
+  return reverseLetters.join("");
+
 }
 
-FirstReverse("test");                            
-FirstReverse("coderbyte");                            
-FirstReverse("I Love Code");                            
+FirstReverse("test");
+FirstReverse("coderbyte");
+FirstReverse("I Love Code");
 
 //Return factorial of input
-function FirstFactorial(num) { 
+function FirstFactorial(num) {
 	totalFactorial = 1;
 	for (i = 1; i <= num; i++) {
 		totalFactorial *= i;
-	} 
-  return totalFactorial;      
+	}
+  return totalFactorial;
 }
-   
-FirstFactorial(4);  
+
+FirstFactorial(4);
 
 //return the longest word in the sentence, minus punctuation
-function LongestWord(sen) { 
+function LongestWord(sen) {
 	sentanceArray = sen.split(" ");
 	maxLength = 0;
 	longWord = "";
@@ -36,19 +36,19 @@ function LongestWord(sen) {
 			longWord = tempWord;
 		}
 	}
-  return longWord; 
-         
+  return longWord;
+
 }
-   
-LongestWord("fun&!! time");    
-LongestWord("I love dogs"); 
+
+LongestWord("fun&!! time");
+LongestWord("I love dogs");
 
 //secret algorithm that changes letters to one char further in alphabet, vowels must be capitalized
 function nextChar(c) {
     return String.fromCharCode(c.charCodeAt(0) + 1);
 }
 
-function LetterChanges(str) { 
+function LetterChanges(str) {
 	newString = "";
 	for (i=0;i<str.length;i++) {
 		tempChar = nextChar(str.charAt(i))
@@ -60,26 +60,26 @@ function LetterChanges(str) {
 			newString += str.charAt(i);
 		}
 	}
-  return newString;  
+  return newString;
 }
-   
-LetterChanges("hello*3"); 
-LetterChanges("fun times!"); 
+
+LetterChanges("hello*3");
+LetterChanges("fun times!");
 
 //have function add up all numbers 1 to n
-function SimpleAdding(num) { 
+function SimpleAdding(num) {
 	var totalSum = 0;
 	for (i = 1; i <= num; i++) {
 		totalSum += i;
 	}
-  return totalSum;          
+  return totalSum;
 }
 
-SimpleAdding(12);  
+SimpleAdding(12);
 SimpleAdding(140);
 
 //take a string sentence, and capitalize first letter of each word
-function LetterCapitalize(str) { 
+function LetterCapitalize(str) {
 	splitString = str.split(" ");
 	finalStringArray = []
 	for (i = 0; i < splitString.length; i++) {
@@ -89,13 +89,13 @@ function LetterCapitalize(str) {
 	}
   return finalStringArray.join().replace(/,/g," ");
 }
-   
-LetterCapitalize("hello world");  
-LetterCapitalize("i ran there"); 
+
+LetterCapitalize("hello world");
+LetterCapitalize("i ran there");
 
 //function to test whether letter char are surrounded by either '=' or '+'
 //could not figure out a way to combine both conditionals so I had to separate them into two separate tests
-function SimpleSymbols(str) { 
+function SimpleSymbols(str) {
 	for (i = 0; i < str.length; i++) {
 		if (str.charAt(i).match(/\w/) != null) {
 			var firstTest = false;
@@ -111,17 +111,17 @@ function SimpleSymbols(str) {
 			if (firstTest == true || secondTest == true) {
 				return true;
 			} else {
-			  return false;          
+			  return false;
 			}
 		}
 	}
 }
-   
-SimpleSymbols("+d+=3=+s+"); 
+
+SimpleSymbols("+d+=3=+s+");
 SimpleSymbols("f++d+");
 
 //Check to see whether num1 is < num2, if equal return a -1 string??, this one is silly
-function CheckNums(num1,num2) { 
+function CheckNums(num1,num2) {
 	if (num2 > num1) {
 		return true;
 	} else if (num2 === num1) {
@@ -130,34 +130,34 @@ function CheckNums(num1,num2) {
 		return false;
 	}
 }
-   
-// keep this function call here 
+
+// keep this function call here
 // to see how to enter arguments in JavaScript scroll down
-CheckNums(3,122);    
-CheckNums(67,67);    
+CheckNums(3,122);
+CheckNums(67,67);
 
 //take input in minutes, convert to Hours:Minutes
-function TimeConvert(num) { 
+function TimeConvert(num) {
 	var hours = Math.floor(num / 60);
-	var minutes = num % 60;  
-  return hours + ":" + minutes; 
+	var minutes = num % 60;
+  return hours + ":" + minutes;
 }
- 
-TimeConvert(126);                            
-TimeConvert(45);                            
+
+TimeConvert(126);
+TimeConvert(45);
 
 // take string input and return the chars in alphabetical order
-function AlphabetSoup(str) { 
+function AlphabetSoup(str) {
   return str.split("").sort().join().replace(/,/g,"");
 }
-   
-// keep this function call here 
+
+// keep this function call here
 // to see how to enter arguments in JavaScript scroll down
-AlphabetSoup("coderbyte"); 
-AlphabetSoup("hooplah"); 
+AlphabetSoup("coderbyte");
+AlphabetSoup("hooplah");
 
 // test whether string has at least one instance of chars 'a' and 'b' being exactly 3 places away from eachother
-function ABCheck(str) { 
+function ABCheck(str) {
 	splitString = str.split("");
 	for (i=0;i<splitString.length;i++){
 		if(splitString[i] == "a") {
@@ -176,12 +176,12 @@ function ABCheck(str) {
 	}
 	return false;
 }
-   
-ABCheck("after badly");                            
+
+ABCheck("after badly");
 ABCheck("Laura sobs");
 
 // take string input and count how many vowels it contains
-function VowelCount(str) { 
+function VowelCount(str) {
 	splitString = str.split("");
 	count = 0;
 	for (i=0;i<splitString.length;i++) {
@@ -189,16 +189,16 @@ function VowelCount(str) {
 			count++;
 		}
 	}
-  return count;          
+  return count;
 }
-   
-VowelCount("hello");                              
+
+VowelCount("hello");
 VowelCount("coderbyte");
 
 // take string input and count how many words in t contains
 function WordCount(str) {
 	return str.split(" ").length;
-}                              
+}
 
 WordCount("Hello World");
 WordCount("one 22 three");
@@ -334,7 +334,7 @@ function DivisionStringified(num1,num2) {
 
 DivisionStringified(687644894944,67)
 
-// convert an input string of 'xx:xxpm-xx:xxam' to minutes 
+// convert an input string of 'xx:xxpm-xx:xxam' to minutes
 // INCOMPLETE
 function CountingMinutesI(str) {
 	regExArray = /^(\d{1,2}):(\d{2})(\w{2})-(\d{1,2}):(\d{2})(\w{2})/.exec(str)
@@ -343,7 +343,7 @@ function CountingMinutesI(str) {
 	totalMinutes = 0
 	if (regExArray[3] == "pm") {
 		firstTime['hours'] = parseInt(regExArray[1]) + 12
-		firstTime['minutes'] = parseInt(regExArray[2]) 
+		firstTime['minutes'] = parseInt(regExArray[2])
 	} else {
 		if (regExArray[1] == "12") {
 			firstTime['hours'] = 0;
@@ -354,7 +354,7 @@ function CountingMinutesI(str) {
 	}
 	if (regExArray[6] == "pm") {
 		secondTime['hours'] = parseInt(regExArray[4]) + 12
-		secondTime['minutes'] = parseInt(regExArray[5]) 
+		secondTime['minutes'] = parseInt(regExArray[5])
 	} else {
 		if (regExArray[4] == "12") {
 			secondTime['hours'] = 0;
@@ -432,7 +432,7 @@ function SwapCase(str) {
 			if(splitString[i] == splitString[i].toUpperCase()) {
 				finalString += splitString[i].toLowerCase();
 			} else {
-				finalString += splitString[i].toUpperCase();	
+				finalString += splitString[i].toUpperCase();
 			}
 		} else {
 			finalString += splitString[i];
@@ -491,7 +491,7 @@ PowersofTwo(16)
 PowersofTwo(124)
 
 // calculate additive persistence of input
-// this is amount of times you must add the digits all together until you reach a single digit 
+// this is amount of times you must add the digits all together until you reach a single digit
 function AdditivePersistence(num) {
 	count = 0;
 	if (num < 10) {return 0;}
@@ -527,7 +527,7 @@ MultiplicativePersistence(4)
 MultiplicativePersistence(25)
 
 // take input array of integers and letter 'E'
-// if letter 'E', take smallest digit appearing before 'E' and add to final output array 
+// if letter 'E', take smallest digit appearing before 'E' and add to final output array
 function OffLineMinimum(strArr) {
 	tempArray = [];
 	finalArray = [];
